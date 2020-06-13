@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="exam.rcos.dao.UserDao">
+	<!-- SQL语句 -->
+	<select id="test" resultType="string">
+		select now()
+	</select>
+	<select id="userLogin" resultType="String" parameterType="map">
+	select FRESH_PASSWORD  from fresh_user where FRESH_ID='${id}'
+	</select>
+	<select id="allDeparts" resultType="exam.rcos.object.Depart">
+	select * from depart
+	</select>
+	<select id="allPaper" resultType="exam.rcos.object.Paper">
+	select paper_info.* from fresh, setpaper, paper_info, admin_user 
+	where admin_user.admin_id = setpaper.admin_id 
+	and setpaper.paper_id=paper_info.paper_id 
+	and admin_user.depart_id=fresh.depart_id 
+	and fresh.fresh_id=${id}
+	</select>
+</mapper>

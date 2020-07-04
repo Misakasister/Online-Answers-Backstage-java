@@ -6,8 +6,8 @@ public class Paper {
 	//DEPART_NAME,paper_info.PAPER_ID,PAPER_NAME,START_TIME,END_TIME,SET_TIME
 	@JsonProperty("PAPER_ID")
 	private String PAPER_ID;
-	@JsonProperty("PAPER_NANE")
-	private String PAPER_NANE;
+	@JsonProperty("PAPER_NAME")
+	private String PAPER_NAME;
 	@JsonProperty("START_TIME")
 	private String START_TIME;
 	@JsonProperty("END_TIME")
@@ -29,14 +29,14 @@ public class Paper {
 	/**
 	 * @return the pAPER_NANE
 	 */
-	public String getPAPER_NANE() {
-		return PAPER_NANE;
+	public String getPAPER_NAME() {
+		return PAPER_NAME;
 	}
 	/**
 	 * @param pAPER_NANE the pAPER_NANE to set
 	 */
-	public void setPAPER_NANE(String pAPER_NANE) {
-		PAPER_NANE = pAPER_NANE;
+	public void setPAPER_NAME(String pAPER_NAME) {
+		PAPER_NAME = pAPER_NAME;
 	}
 	/**
 	 * @return the sTART_TIME

@@ -19,4 +19,28 @@
 	and admin_user.depart_id=fresh.depart_id 
 	and fresh.fresh_id=${id}
 	</select>
+	<select id="isAnswer" resultType="exam.rcos.object.Goal">
+	select * from goal where fresh_id=${id} and paper_id=${paper_id}
+	</select>
+	<select id="getPaperInfo" resultType="exam.rcos.object.PaperInfo">
+	select QUES_ID,PAPER_ID,QUES_TYPE,QUES_MAX,QUES_CONTENT,A,B,C,D,IMAGE from ques where paper_id=${paper_id} order by ques_id
+	</select>
+	<select id="paperTitle" resultType="exam.rcos.object.PaperTitle">
+	select * from paper_info where paper_id=${paper_id}
+	</select>
+	<insert id="finishPaper" >
+	insert into goal(fresh_id,paper_id) values(${userId},${paperId})
+	</insert>
+	<insert id="insertAns">
+	insert into fresh_ans (fresh_id,ques_id, user_ans) values(${userId},${quesId},'${userAns}')
+	</insert>
+	<select id="objectGoal" resultType="exam.rcos.object.ObjectGoal">
+	select ques_id, ans, ques_max from ques where paper_id=${paperId} order by ques_id;
+	</select>
+	<update id="updateObjectQuesGoal" >
+	update fresh_ans set ans_mark=${goal} where ques_id=${quesId} and fresh_id=${userId}
+	</update>
+	<update id="updateGoal">
+	update goal set objmark=${total} where paper_id=${paperId} and fresh_id=${userId}
+	</update>
 </mapper>
